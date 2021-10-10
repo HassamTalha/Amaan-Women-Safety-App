@@ -1,4 +1,4 @@
-<h2 align="center" style="font-size: 52px;" ><img height=40 src="https://user-images.githubusercontent.com/43790152/136710076-c634d2bf-fdfa-439c-9696-c87a7d6b0f2d.jpg"> Amaan - You Deserve to be Safe!</h2>
+<h1 align="center" style="font-size: 52px;" ><img height=35 src="https://user-images.githubusercontent.com/43790152/136710076-c634d2bf-fdfa-439c-9696-c87a7d6b0f2d.jpg"> Amaan - You Deserve to be Safe!</h1>
 
 <img src="https://user-images.githubusercontent.com/43790152/136709012-5e27b2f9-06d6-40fc-8ed0-26d67818e204.png">
 
