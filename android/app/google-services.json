@@ -1,0 +1,151 @@
+{
+  "project_info": {
+    "project_number": "513918289276",
+    "firebase_url": "https://testing-project-c7089.firebaseio.com",
+    "project_id": "testing-project-c7089",
+    "storage_bucket": "testing-project-c7089.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513918289276:android:90331bd6101731914a10f9",
+        "android_client_info": {
+          "package_name": "com.ashuvssut.women_safety_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513918289276-8rgbddfbp1f7f7ipnrraba94ge4rfbpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ashuvssut.women_safety_app",
+            "certificate_hash": "7ddac809df41d79b7f76b068fdc683dd33c68172"
+          }
+        },
+        {
+          "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUvl8vpqToOasnRq64WylZOrJXiT2NLnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513918289276:android:66fa5819c8e0bc094a10f9",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513918289276-mcc7k25ags9kc1vri09gmd05cngv5t0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chat_app",
+            "certificate_hash": "7ddac809df41d79b7f76b068fdc683dd33c68172"
+          }
+        },
+        {
+          "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUvl8vpqToOasnRq64WylZOrJXiT2NLnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513918289276:android:8ac4648ec6b7a5214a10f9",
+        "android_client_info": {
+          "package_name": "com.example.excelregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513918289276-ehundkpeo0ke0er6boer0usrlrtrelpb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.excelregister",
+            "certificate_hash": "1c1cdbeb6a090376d8b454a7e296b7284814085c"
+          }
+        },
+        {
+          "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUvl8vpqToOasnRq64WylZOrJXiT2NLnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513918289276:android:f2348fc6d4af5e214a10f9",
+        "android_client_info": {
+          "package_name": "com.example.womensafteyhackfair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUvl8vpqToOasnRq64WylZOrJXiT2NLnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513918289276-fol8f7i5v11v0rf6fcq1h6jsg7ol0i5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
