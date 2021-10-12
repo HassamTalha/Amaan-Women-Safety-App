@@ -62,7 +62,7 @@ class _SplashState extends State<Splash> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 100.0),
+                padding: const EdgeInsets.only(bottom: 140.0),
                 child: Text(
                   "You deserve to be safe!",
                   style: TextStyle(color: Colors.white, fontSize: 18),

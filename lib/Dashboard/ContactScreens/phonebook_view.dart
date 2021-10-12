@@ -40,8 +40,10 @@ class _PhoneBookState extends State<PhoneBook> {
   refreshContacts() async {
     PermissionStatus permissionStatus = await _getContactPermission();
     if (permissionStatus == PermissionStatus.granted) {
-      var contacts =
-          (await ContactsService.getContacts(withThumbnails: false)).toList();
+      var contacts = (await ContactsService.getContacts(
+        withThumbnails: false,
+      ))
+          .toList();
       setState(() {
         _contacts = contacts;
         filteredContacts = _contacts;
@@ -89,7 +91,8 @@ class _PhoneBookState extends State<PhoneBook> {
       for (Contact c in _userSelectedContacts) {
         String entity = "";
         if (c.phones.isNotEmpty) {
-          entity = "${c.displayName ?? "User"}***${c.phones.first.value ?? ""}";
+          String refactoredNumber = refactorPhoneNumbers(c.phones.first.value);
+          entity = "${c.displayName ?? "User"}***$refactoredNumber";
         } else {
           entity = "${c.displayName ?? "User"}***";
         }
@@ -192,10 +195,35 @@ class _PhoneBookState extends State<PhoneBook> {
     }
     if (!alreadyInList) {
       _userSelectedContacts.add(con);
-      Fluttertoast.showToast(msg: "Added to your selected contact list.");
+      Fluttertoast.showToast(
+          msg: "${_userSelectedContacts.length} contacts selected");
     } else {
       Fluttertoast.showToast(msg: "Already in your selected List");
     }
+  }
+
+  String refactorPhoneNumbers(String phone) {
+    if (phone == null || phone == "") {
+      return "";
+    }
+    var newPhone = phone.replaceAll(RegExp(r"[^\name\w]"), '');
+    if (newPhone.length == 12) {
+      newPhone = "+" + newPhone.substring(0, newPhone.length);
+    }
+    if (newPhone.length == 11) {
+      newPhone = "+92" + newPhone.substring(1, newPhone.length);
+    }
+    if (newPhone.length > 12) {
+      var start2Number = newPhone.substring(0, 2);
+      if (start2Number == "92") {
+        newPhone = "+" + newPhone.substring(0, 12);
+      }
+      if (start2Number == "03") {
+        newPhone = "+92" + newPhone.substring(1, newPhone.length);
+      }
+    }
+
+    return newPhone;
   }
 }
 
@@ -219,40 +247,44 @@ class _ItemsTileState extends State<ItemsTile> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
-    return WidgetAnimator(
-      Card(
-        child: ListTile(
-          onTap: () {
-            widget.addToContacts(widget.c);
-          },
-          leading: CircleAvatar(
-              backgroundColor: Color(0xffbe3a5a),
-              child: Text('${widget.c.displayName[0]}'.toUpperCase(),
-                  style: TextStyle(color: Colors.white)),
-              radius: height * 0.025),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                widget.c.displayName ?? "",
-                style: TextStyle(color: Colors.black, fontSize: height * 0.022),
+    return widget._items.isEmpty
+        ? SizedBox(height: 1)
+        : WidgetAnimator(
+            Card(
+              child: ListTile(
+                onTap: () {
+                  widget.addToContacts(widget.c);
+                },
+                leading: CircleAvatar(
+                    backgroundColor: Color(0xffbe3a5a),
+                    child: Text('${widget.c.displayName[0]}'.toUpperCase(),
+                        style: TextStyle(color: Colors.white)),
+                    radius: height * 0.025),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      widget.c.displayName ?? "",
+                      style: TextStyle(
+                          color: Colors.black, fontSize: height * 0.022),
+                    ),
+                    SizedBox(height: height * 0.01),
+                    Column(
+                        children: widget._items
+                            .map(
+                              (i) => Text(
+                                i.value ?? i.label ?? "",
+                                style: TextStyle(color: Colors.grey[600]),
+                              ),
+                            )
+                            .toList())
+                  ],
+                ),
+                trailing:
+                    Text('Tap', style: TextStyle(color: Colors.grey[400])),
               ),
-              SizedBox(height: height * 0.01),
-              Column(
-                  children: widget._items
-                      .map(
-                        (i) => Text(
-                          i.value ?? "",
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                      )
-                      .toList())
-            ],
-          ),
-          trailing: Text('Tap', style: TextStyle(color: Colors.grey[400])),
-        ),
-      ),
-    );
+            ),
+          );
   }
 }
 
@@ -260,29 +292,3 @@ class _ItemsTileState extends State<ItemsTile> {
 // uploadContact.name = widget.c.displayName;
 //             var phoneNumber =
 //                 widget._items.map((i) => i.value ?? " ").toString();
-//             var newPhone = phoneNumber.replaceAll(RegExp(r"[^\name\w]"), '');
-//             if (newPhone.length == 12) {
-//               uploadContact.phoneNumber =
-//                   "+" + newPhone.substring(0, newPhone.length);
-//             }
-//             if (newPhone.length == 11) {
-//               uploadContact.phoneNumber =
-//                   "+92" + newPhone.substring(1, newPhone.length);
-//             }
-//             if (newPhone.length > 12) {
-//               var start2Number = newPhone.substring(0, 2);
-//               if (start2Number == "92") {
-//                 uploadContact.phoneNumber = "+" + newPhone.substring(0, 12);
-//               }
-//               if (start2Number == "03") {
-//                 uploadContact.phoneNumber =
-//                     "+92" + newPhone.substring(1, newPhone.length);
-//               }
-//             }
-//            Fluttertoast.showToast(msg:"${widget.c.displayName} Added!", 
-               
-//                 gravity: ToastGravity.CENTER,
-//                 textColor: Colors.black,
-//                 backgroundColor: Colors.white,
-//                );
-//             contactToBeUpload();

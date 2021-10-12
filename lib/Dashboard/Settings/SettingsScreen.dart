@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:womensafteyhackfair/Dashboard/Settings/ChangePin.dart';
+import 'package:womensafteyhackfair/main.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key key}) : super(key: key);
@@ -11,12 +13,17 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool switchValue = false;
-
   Future<int> checkPIN() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int pin = (prefs.getInt('pin') ?? -1111);
     print('User $pin .');
     return pin;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkService();
   }
 
   @override
@@ -105,6 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (val) {
               setState(() {
                 switchValue = val;
+                controllSafeShake(val);
               });
             },
             value: switchValue,
@@ -167,5 +175,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ],
       ),
     );
+  }
+
+  Future<bool> checkService() async {
+    bool running = await FlutterBackgroundService().isServiceRunning();
+    setState(() {
+      switchValue = running;
+    });
+
+    return running;
+  }
+
+  void controllSafeShake(bool val) async {
+    if (val) {
+      FlutterBackgroundService.initialize(onStart);
+    } else {
+      FlutterBackgroundService().sendData(
+        {"action": "stopService"},
+      );
+    }
   }
 }
