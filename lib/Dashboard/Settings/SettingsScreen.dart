@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:womensafteyhackfair/Dashboard/Settings/About.dart';
 import 'package:womensafteyhackfair/Dashboard/Settings/ChangePin.dart';
 import 'package:womensafteyhackfair/background_services.dart';
 
@@ -152,6 +153,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ],
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AboutUs()));
+            },
             title: Text("About Us"),
             leading: CircleAvatar(
               backgroundColor: Colors.grey[200],
