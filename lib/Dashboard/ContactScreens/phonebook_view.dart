@@ -73,7 +73,7 @@ class _PhoneBookState extends State<PhoneBook> {
     refreshContacts();
   }
 
-  Future<bool> goBack() async {
+  goBack() async {
     // checkFor contacts existance
     Navigator.pushAndRemoveUntil(
         context,

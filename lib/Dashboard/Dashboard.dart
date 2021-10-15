@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geocoder/geocoder.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart' as appPermissions;
 import 'package:pinput/pin_put/pin_put.dart';
@@ -216,11 +215,11 @@ class _DashboardState extends State<Dashboard> {
           backgroundColor: Colors.red,
         );
       } else {
-        var coordinates =
-            Coordinates(currentLocation.latitude, currentLocation.longitude);
-        var addresses =
-            await Geocoder.local.findAddressesFromCoordinates(coordinates);
-        var first = addresses.first;
+        //var coordinates =
+        //    Coordinates(currentLocation.latitude, currentLocation.longitude);
+        //var addresses =
+        //    await Geocoder.local.findAddressesFromCoordinates(coordinates);
+        // var first = addresses.first;
         String li =
             "http://maps.google.com/?q=${currentLocation.latitude},${currentLocation.longitude}";
         if (isAlert) {

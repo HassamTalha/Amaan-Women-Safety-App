@@ -46,4 +46,4 @@ app.*.map.json
 /android/app/release
 
 # Important Logic Files
-/lib/main.dart
+lib/background_services.dart

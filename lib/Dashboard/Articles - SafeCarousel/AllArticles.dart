@@ -14,7 +14,6 @@ class AllArticles extends StatefulWidget {
 
 class _AllArticlesState extends State<AllArticles>
     with TickerProviderStateMixin {
-  final List<Widget> _categories = [];
   AnimationController _controller;
 
   @override

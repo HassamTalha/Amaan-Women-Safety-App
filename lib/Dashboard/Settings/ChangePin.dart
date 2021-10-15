@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:womensafteyhackfair/Dashboard/Dashboard.dart';
 
 class ChangePinScreen extends StatefulWidget {
   final int pin;
