@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:womensafteyhackfair/Dashboard/Articles%20-%20SafeCarousel/AllArticles.dart';
 import 'package:womensafteyhackfair/Dashboard/DashWidgets/DashAppbar.dart';
 import 'package:womensafteyhackfair/Dashboard/DashWidgets/Emergency.dart';
 import 'package:womensafteyhackfair/Dashboard/DashWidgets/LiveSafe.dart';
-import 'package:womensafteyhackfair/Dashboard/DashWidgets/SafeCarousel.dart';
+import 'package:womensafteyhackfair/Dashboard/Articles%20-%20SafeCarousel/SafeCarousel.dart';
 import 'package:womensafteyhackfair/Dashboard/DashWidgets/SafeHome.dart';
 
 class Home extends StatefulWidget {
@@ -59,13 +60,24 @@ class _HomeState extends State<Home> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ),
-                      TextButton(onPressed: () {}, child: Text("See More"))
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllArticles(),
+                            ),
+                          );
+                        },
+                        child: Text("See More"),
+                      ),
                     ],
                   ),
                 ),
                 Emergency(),
                 Padding(
-                  padding: const EdgeInsets.only(left: 16.0, bottom: 10, top: 10),
+                  padding:
+                      const EdgeInsets.only(left: 16.0, bottom: 10, top: 10),
                   child: Text(
                     "Explore LiveSafe",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

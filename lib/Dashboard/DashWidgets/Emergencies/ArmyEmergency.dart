@@ -45,35 +45,44 @@ class ArmyEmergency extends StatelessWidget {
                         "assets/army.png",
                         height: 35,
                       ))),
-                  Text(
-                    "NACTA",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
-                  ),
-                  Text(
-                    "National Counter Terrorism Authority",
-                    style: TextStyle(color: Colors.white),
-                  ),
                   Expanded(
-                    child: Container(
-                      height: 30,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(300)),
-                      child: Center(
-                        child: Text(
-                          "1 -7 -1 -7",
-                          style: TextStyle(
-                              color: Colors.red[300],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "NACTA",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: MediaQuery.of(context).size.width * 0.06),
+                      ),
+                      Text(
+                        "National Counter Terrorism Authority",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.035),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Container(
+                        height: 30,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(300)),
+                        child: Center(
+                          child: Text(
+                            "1 -7 -1 -7",
+                            style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    ],
+                  )),
                 ],
               ),
             ),

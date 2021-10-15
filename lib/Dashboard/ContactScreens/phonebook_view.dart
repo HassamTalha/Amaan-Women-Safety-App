@@ -86,7 +86,7 @@ class _PhoneBookState extends State<PhoneBook> {
 
   saveContacts() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> numbers = [];
+    List<String> numbers = prefs.getStringList("numbers") ?? [];
     if (_userSelectedContacts.isNotEmpty) {
       for (Contact c in _userSelectedContacts) {
         String entity = "";
@@ -96,11 +96,12 @@ class _PhoneBookState extends State<PhoneBook> {
         } else {
           entity = "${c.displayName ?? "User"}***";
         }
-        numbers.add(entity);
+        if (!numbers.contains(entity)) numbers.add(entity);
       }
 
       prefs.setStringList("numbers", numbers);
       Fluttertoast.showToast(msg: "List Has been Saved");
+      goBack();
     } else {
       Fluttertoast.showToast(msg: "Please add atleast one contact");
     }
@@ -157,6 +158,10 @@ class _PhoneBookState extends State<PhoneBook> {
               child: ListView.separated(
                 padding: EdgeInsets.symmetric(vertical: height * 0.01),
                 separatorBuilder: (context, index) {
+                  Contact c = filteredContacts?.elementAt(index);
+                  if (c.phones.isEmpty) {
+                    return SizedBox();
+                  }
                   return Divider(height: height * 0.01);
                 },
                 itemCount: filteredContacts?.length ?? 0,
@@ -238,22 +243,33 @@ class ItemsTile extends StatefulWidget {
 }
 
 class _ItemsTileState extends State<ItemsTile> {
+  String currentContact = '';
+
   @override
   void initState() {
     super.initState();
+
+    currentContact = '';
   }
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-
+    if (currentContact.isNotEmpty) {
+      currentContact = '';
+    }
     return widget._items.isEmpty
-        ? SizedBox(height: 1)
+        ? SizedBox()
         : WidgetAnimator(
             Card(
               child: ListTile(
                 onTap: () {
                   widget.addToContacts(widget.c);
+                  FocusScopeNode currentFocus = FocusScope.of(context);
+
+                  if (!currentFocus.hasPrimaryFocus) {
+                    currentFocus.unfocus();
+                  }
                 },
                 leading: CircleAvatar(
                     backgroundColor: Color(0xffbe3a5a),
@@ -270,14 +286,19 @@ class _ItemsTileState extends State<ItemsTile> {
                     ),
                     SizedBox(height: height * 0.01),
                     Column(
-                        children: widget._items
-                            .map(
-                              (i) => Text(
-                                i.value ?? i.label ?? "",
-                                style: TextStyle(color: Colors.grey[600]),
-                              ),
-                            )
-                            .toList())
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: widget._items.map((
+                          i,
+                        ) {
+                          if (currentContact == i.value.replaceAll(" ", "")) {
+                            return Row();
+                          }
+                          currentContact = i.value.replaceAll(" ", "");
+                          return Text(
+                            i.value ?? i.label ?? "",
+                            style: TextStyle(color: Colors.grey[600]),
+                          );
+                        }).toList())
                   ],
                 ),
                 trailing:

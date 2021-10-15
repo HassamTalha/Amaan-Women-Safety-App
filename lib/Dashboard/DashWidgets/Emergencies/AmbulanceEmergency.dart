@@ -45,35 +45,44 @@ class AmbulanceEmergency extends StatelessWidget {
                         "assets/ambulance.png",
                         height: 35,
                       ))),
-                  Text(
-                    "Ambulance",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
-                  ),
-                  Text(
-                    "In case of any medical emergency call",
-                    style: TextStyle(color: Colors.white),
-                  ),
                   Expanded(
-                    child: Container(
-                      height: 30,
-                      width: 100,
-                      decoration: BoxDecoration(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Ambulance",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: MediaQuery.of(context).size.width * 0.06),
+                      ),
+                      Text(
+                        "In case of any medical emergency call",
+                        style: TextStyle(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(300)),
-                      child: Center(
-                        child: Text(
-                          "1 -1 -2 -2",
-                          style: TextStyle(
-                              color: Colors.red[300],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          fontSize: MediaQuery.of(context).size.width * 0.035,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Container(
+                        height: 30,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(300)),
+                        child: Center(
+                          child: Text(
+                            "1 -1 -2 -2",
+                            style: TextStyle(
+                                color: Colors.red[300],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    ],
+                  )),
                 ],
               ),
             ),

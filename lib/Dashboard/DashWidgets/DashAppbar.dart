@@ -23,7 +23,9 @@ class DashAppbar extends StatelessWidget {
         child: Text(
           sweetSayings[quoteIndex][1],
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).size.width * 0.06),
         ),
       ),
       trailing: Card(

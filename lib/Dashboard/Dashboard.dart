@@ -7,7 +7,6 @@ import 'package:permission_handler/permission_handler.dart' as appPermissions;
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_maintained/sms.dart' as smsSender;
-import 'package:telephony/telephony.dart';
 import 'package:womensafteyhackfair/Dashboard/ContactScreens/phonebook_view.dart';
 import 'package:womensafteyhackfair/Dashboard/Home.dart';
 import 'package:womensafteyhackfair/Dashboard/ContactScreens/MyContacts.dart';
@@ -190,10 +189,12 @@ class _DashboardState extends State<Dashboard> {
   }
 
   sendAlertSMS(bool isAlert) async {
-    setState(() {
-      alerted = !alerted;
-    });
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      prefs.setBool("alerted", isAlert);
+      alerted = isAlert;
+    });
+    checkPermission();
 
     prefs.setBool("alerted", isAlert);
     List<String> numbers = prefs.getStringList("numbers") ?? [];
@@ -206,6 +207,10 @@ class _DashboardState extends State<Dashboard> {
       var currentLocation = myLocation;
 
       if (numbers.isEmpty) {
+        setState(() {
+          prefs.setBool("alerted", false);
+          alerted = false;
+        });
         return Fluttertoast.showToast(
           msg: 'No Contacts Found!',
           backgroundColor: Colors.red,
@@ -240,6 +245,12 @@ class _DashboardState extends State<Dashboard> {
         print("Error due to not Asking: $error");
       }
       myLocation = null;
+
+      prefs.setBool("alerted", false);
+
+      setState(() {
+        alerted = false;
+      });
     }
   }
 
@@ -252,7 +263,7 @@ class _DashboardState extends State<Dashboard> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 2.7,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -321,13 +332,12 @@ class _DashboardState extends State<Dashboard> {
         msg: 'We are glad that you are safe',
       );
       sendAlertSMS(false);
-      Navigator.pop(context);
-
-      return;
+      _pinPutController.clear();
+      _pinPutFocusNode.unfocus();
+    } else {
+      Fluttertoast.showToast(
+        msg: 'Wrong Pin! Please try again',
+      );
     }
-
-    Fluttertoast.showToast(
-      msg: 'Wrong Pin! Please try again',
-    );
   }
 }

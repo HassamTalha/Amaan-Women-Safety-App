@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyContactsScreen extends StatefulWidget {
@@ -81,7 +82,11 @@ class _MyContactsScreenState extends State<MyContactsScreen> {
                               onTap: () {
                                 print('Delete');
                                 setState(() {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "${snap.data[index].split("***")[0] ?? "No Name"} removed!");
                                   snap.data.remove(snap.data[index]);
+
                                   updateNewContactList(snap.data);
                                 });
                               },
@@ -90,6 +95,9 @@ class _MyContactsScreenState extends State<MyContactsScreen> {
                         );
                       },
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                 ],
               );

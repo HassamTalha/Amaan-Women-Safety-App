@@ -45,33 +45,44 @@ class FireEmergency extends StatelessWidget {
                         "assets/flame.png",
                         height: 35,
                       ))),
-                  Text(
-                    "Fire Brigade",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
-                  ),
-                  Text(
-                    "In case of any Fire emergencies call",
-                    style: TextStyle(color: Colors.white),
-                  ),
                   Expanded(
-                    child: Container(
-                      height: 30,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(300)),
-                      child: Center(
-                        child: Text(
-                          "0 -1 -6",
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Fire Brigade",
                           style: TextStyle(
-                              color: Colors.red[300],
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.06),
                         ),
-                      ),
+                        Text(
+                          "In case of any Fire emergencies call",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.035),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Container(
+                          height: 30,
+                          width: 80,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(300)),
+                          child: Center(
+                            child: Text(
+                              "0 -1 -6",
+                              style: TextStyle(
+                                  color: Colors.red[300],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

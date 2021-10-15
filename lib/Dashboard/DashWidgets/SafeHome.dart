@@ -30,7 +30,7 @@ class _SafeHomeState extends State<SafeHome> {
     if (value) {
       Fluttertoast.showToast(msg: "Service Activated in Background!");
     } else {
-      Fluttertoast.showToast(msg: "Service Stopped!");
+      Fluttertoast.showToast(msg: "Service Disabled!");
     }
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -158,13 +158,7 @@ class _SafeHomeState extends State<SafeHome> {
                           borderRadius: BorderRadius.circular(20),
                           color: Color(0xFFF5F4F6)),
                       child: SwitchListTile(
-                        secondary: CircleAvatar(
-                          backgroundColor: Colors.grey[200],
-                          child: SpinKitDoubleBounce(
-                            color: Colors.red,
-                            size: 30,
-                          ),
-                        ),
+                        secondary: Lottie.asset("assets/routes.json"),
                         value: getHomeActivated,
                         onChanged: (val) async {
                           if (val && selectedContact == -1) {
@@ -267,16 +261,6 @@ class _SafeHomeState extends State<SafeHome> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     numbers = prefs.getStringList("numbers") ?? [];
-    if (numbers.isEmpty) {
-      prefs.setStringList("numbers", [
-        "Hassam Talha***+923457760349",
-        "Hassam Talha***03457760349",
-        "Hassam Talha***03457760349",
-        "Hassam Talha***03457760349",
-        "Hassam Talha***03457760349",
-        "Hassam Talha***03457760349"
-      ]);
-    }
 
     return numbers;
   }

@@ -45,31 +45,44 @@ class PoliceEmergency extends StatelessWidget {
                         "assets/icons/alert.png",
                         height: 35,
                       ))),
-                  Text(
-                    "Active Emergency",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
-                  ),
-                  Text(
-                    "Call 0-1-5 for emergencies.",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  Container(
-                    height: 30,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(300)),
-                    child: Center(
-                      child: Text(
-                        "0 -1 -5",
-                        style: TextStyle(
-                            color: Colors.red[300],
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Active Emergency",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.06),
+                        ),
+                        Text(
+                          "Call 0-1-5 for emergencies.",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.035),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Container(
+                          height: 30,
+                          width: 80,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(300)),
+                          child: Center(
+                            child: Text(
+                              "0 -1 -5",
+                              style: TextStyle(
+                                  color: Colors.red[300],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
