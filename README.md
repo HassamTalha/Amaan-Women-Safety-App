@@ -2,6 +2,10 @@
 
 This is Hackfair 2.0 Submission where team from Google DSC COMSATS University Islamabad developed a women safety app and played their part in women rights and empowerment.
 
+###  🔽[Download][download] Android APK (TESTING)
+
+<br>
+
 <img src="https://user-images.githubusercontent.com/43790152/136709012-5e27b2f9-06d6-40fc-8ed0-26d67818e204.png">
 
 ## ⚠️ Problem Statement
@@ -42,3 +46,5 @@ Here's what we have developed!
 
 <img src="https://user-images.githubusercontent.com/43790152/136709008-974e5fde-ca20-492c-ae13-131b4c318c1f.png">
 
+
+[download]: https://drive.google.com/file/d/1tEdz0d6l70O9uDjRZzpHKsav-PiPmlan/view?usp=sharing
