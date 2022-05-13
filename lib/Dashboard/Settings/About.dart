@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timelines/timelines.dart';
 import 'package:womensafteyhackfair/Dashboard/Settings/AboutCard.dart';
 
 class AboutUs extends StatelessWidget {
@@ -64,7 +63,7 @@ class AboutUs extends StatelessWidget {
           AboutCard(
             asset: "cui",
             desc:
-                """@Kanwal Tanveer, @Fatima, Mahnoor, @Wadood Jamal, @Shahzaneer, @Zuwanish, @Aftab, @M. Hamza, @Hassam Talha""",
+                """@Kanwal Tanveer, @Fatima, @Mahnoor, @Wadood Jamal, @Shahzaneer, @Zuwanish, @Aftab, @M. Hamza, @Hassam Talha""",
             subtitle: "Made with ❤️ for Her!",
             title: "Amaan Team",
             sizeFactor: 2.5,
